@@ -1,0 +1,25 @@
+Safari 切换标签页
+1: command+shift+左右
+2: control+tab
+3: 双指合拢
+
+Safari 关闭标签页
+command+W
+
+Safari 打开标签页
+command+T
+
+
+sublime preferences
+{
+  "font_size": 22.0,
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "word_wrap": true,
+}
+
+scala 
+1:  函数功能查询  command+B
+2:  变量类型显示  alt+enter
+3:  函数提示功能  alt+/(自行更改的 在idea中的preference 的keymap－completion)
+
