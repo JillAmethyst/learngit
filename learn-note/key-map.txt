@@ -2,6 +2,7 @@
 1: command+n 打开一个新窗口
 2: command+T 打开一个新标签
 3: command+W 关闭当前
+4: command+i 终端配色方案
 
 Safari 切换标签页
 1: command+shift+左右
