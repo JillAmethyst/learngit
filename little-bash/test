@@ -1,0 +1,26 @@
+#!/bin/bash
+
+###################################
+num=2
+echo "this is the $numnd"
+echo "this is the ${num}nd"
+
+###################################
+echo hello my girl
+echo -n "Enter your name: "
+
+###################################
+one=first two=second three=third
+fullname="first second third"
+fullname_a="$one $two $three"
+fullname_b=$one$two$three
+echo $fullname
+echo $fullname_a
+echo $fullname_b
+
+###################################
+myvar=this_is_a_long_string
+echo $myvar
+
+###################################
+who|wc -l
