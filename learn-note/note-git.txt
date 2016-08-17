@@ -101,7 +101,14 @@ git push origin master 就可以把版本库传到远程了 不用加-u
 
   12: git stash pop 恢复工作现场的同时,也删了stash
 
-  13: 
+  13: git remote 查看远程库的信息
+
+  14: git remote -v 显示更详细的信息
+
+  15: git push origin master/dev 推送master/dev分支到远程
+
+  16: 
+
   
 
 
