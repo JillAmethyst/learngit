@@ -66,11 +66,16 @@ git push origin master 就可以把版本库传到远程了 不用加-u
      (在不同的分支上用ls命令可以检验不同分支上内容不同)
 
   3: git merge dev 合并dev分支到master分支上
-     (合并后dev的内容就会和master的内容融合)
+     (
+        合并后dev的内容就会和master的内容融合,这个融合很是闹心啊
+        notice: 修改的内容一定提交 否则未add和commit的文件会在两个分支出现 很是头疼 立刻文件就乱了
+                提交之后各个分支处于独立互不干扰的状态,merge的冲突再去解决
+                在master merge dev后,master有冲突,但dev中的内容不变,相当于把dev的内容加入到master中
+     )
 
-  4: what if I do something in dev branch
+  4: 
 
-  5: this is adding by master branch
+  5: 
 
 
 
