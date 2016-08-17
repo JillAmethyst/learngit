@@ -31,6 +31,43 @@ val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)
 wordCounts.collect()
 //列出单词及其个数
 
+flatMap 
+//把数据拍平 可以将RDD[Array(string, Int)] => RDD[(string, Int)]
+
+Array().mkString(",")
+//可以变成String字符串 然后方便打印
+
+.filter(_._1 != "")
+
+.sortWith{ case (x1, x2) => x1._2 > x2._2 }
+
+.dropRight(phoneType.length - 10)
+
+    tuple
+    array.mkstring("\t")
+    tuple.productIterator.mkString("\t")
+
+.groupByKey 
+
+.reduceByKey
+
+.join
+
+.zip
+
+.fill
+
+.
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,35 @@
+idea+spark+scala+sbt
+
+01: 安装idea
+02: 点击idea->preferences->plugin->scala+sbt 下载scala+sbt
+03: 新建一个project
+    if 要用sbt打包 需要新建sbt (第三个选项)
+     else if 要用Scala 无需sbt 新建Scala即可
+04: (以下内容为sbt新建流程)
+05: 因为这里需要用assembly打包 所以首先在左侧project的文件夹里 存成assembly.sbt 不要存在plugin里 会有错
+    添加  addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.11.2")
+    这样  在External Libraries 就会有sbtassembly了
+06: sbt 0.11.2 的一个说明 https://github.com/sbt/sbt-assembly/tree/0.11.2 
+    我这里就先按大家的抄了
+07: 然后在main->src->scala-2.10里面写代码就好了 目前还没搞懂为什么有Scala和Scala－2.10 两个是不是都可以编辑并打包
+08: sh -x bin/build.sh(sbt assembly)
+09: sh -x bin/run.sh 
+10: 这里textFile可以直接读取文件夹，文件，以及.gz的压缩包，所以现在出现了读取.lzo 的问题
+    目前是在bin中加入了argo_tool.sh的环境 使得lzo不再是问题
+11: yarn logs -applicationId application_1459494184870_140402 | less 查看日志 如果有问题的时候
+12: yarn application -kill application_1459494184870_141099 干掉application
+
+screen 
+1: C-a + d 暂时退出
+2: screen -x name 恢复
+3: screen -S name 创建
+
+
+
+hls /user/hive/warehouse/di.db/piwikmeta | awk '{print $NF}'
+
+hfs -du -s -h /user/hive/warehouse/di.db/piwikmeta/day={2016-08-15,2016-08-14,2016-08-13,2016-08-12,2016-08-11,2016-08-10,2016-08-09,2016-08-08,2016-08-07,2016-08-06,2016-08-05,2016-08-04,2016-08-03,2016-08-02,2016-08-01,2016-07-31,2016-07-30,2016-07-29,2016-07-28,2016-07-27,2016-07-26,2016-07-25,2016-07-24,2016-07-23,2016-07-22,2016-07-21,2016-07-20,2016-07-19,2016-07-18,2016-07-17,2016-07-16,2016-07-15,2016-07-14,2016-07-13,2016-07-12,2016-07-11,2016-07-10,2016-07-09,2016-07-08,2016-07-07,2016-07-06,2016-07-05,2016-07-04,2016-07-03,2016-07-02,2016-07-01,2016-06-30,2016-06-29,2016-06-28,2016-06-27,2016-06-26,2016-06-25,2016-06-24,2016-06-23,2016-06-22,2016-06-21,2016-06-20,2016-06-19,2016-06-18,2016-06-17,2016-06-16}
+
+(seq 0 60) | xargs -I {} date -d "{} days ago" +%F
+
+(seq 0 60) | xargs -I {} date -d "{} days ago" +%F | tr '\n' ','

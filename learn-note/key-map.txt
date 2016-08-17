@@ -24,9 +24,15 @@ sublime preferences
   "translate_tabs_to_spaces": true,
   "word_wrap": true,
 }
+1: command+shift+F 搜索
+2: control+command+F 全屏
+
 
 scala 
 1:  函数功能查询  command+B
 2:  变量类型显示  alt+enter
 3:  函数提示功能  alt+/(自行更改的 在idea中的preference 的keymap－completion)
+
+vim
+1: ctrl+V 打散多选 可删注释符
 

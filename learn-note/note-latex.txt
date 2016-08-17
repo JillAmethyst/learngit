@@ -1,0 +1,55 @@
+http://www.mohu.org/info/symbols/symbols.htm
+
+\times 叉乘
+\Vert  范数的||
+\vert  绝对值 ｜
+
+希腊字母
+\alpha
+\delta
+\omega
+
+大括号
+begin{cases}
+a+b=1\\
+a-b=2
+end{cases}
+
+如果是数学符号，那么直接用\limits命令放在正下方，如
+$ \sum\limits_{i=1} $
+若是普通符号，那么要用\mathop先转成数学符号再用\limits，如
+$ \mathop{a}\limits_{i=1} $
+
+空格
+\quad    一个m的宽度
+\qquad   两个m的宽度
+a\ b     1/3 m的宽度
+a\, b    1/6 m的宽度
+a\; b    2/7 m的宽度
+ab       没有空格
+a\! b    缩进1/6 m的宽度
+
+根号
+\sqrt{expression}
+
+\geq  大于等于 
+\leq  小于等于
+
+矩阵
+\begin{gather}
+\begin{matrix} {pmatrix}   {bmatrix}   {Bmatrix}   {vmatrix}   {Vmatrix}
+\alpha\\
+\alpha
+\end{pmatrix}
+\end{gather}
+分别是   没括号   圆括号(.)    方括号[.]    花括号{.}    绝对值|.|    范数||.||
+
+
+
+
+
+
+
+
+
+
