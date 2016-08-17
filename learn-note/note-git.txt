@@ -62,20 +62,46 @@ git push origin master 就可以把版本库传到远程了 不用加-u
        $ git checkout dev
       )
   2: git branch 查看当前有哪些分支
-     git checkout dev 可以切换到branchname的那个分支上
+
+  3: git checkout dev 可以切换到dev的那个分支上
      (在不同的分支上用ls命令可以检验不同分支上内容不同)
 
-  3: git merge dev 合并dev分支到master分支上
+  4: git merge dev 合并dev分支到master分支上
      (
         合并后dev的内容就会和master的内容融合,这个融合很是闹心啊
-        notice: 修改的内容一定提交 否则未add和commit的文件会在两个分支出现 很是头疼 立刻文件就乱了
+        notice: [修改的内容一定提交] 否则未add和commit的文件会在两个分支出现 很是头疼 立刻文件就乱了
                 提交之后各个分支处于独立互不干扰的状态,merge的冲突再去解决
                 在master merge dev后,master有冲突,但dev中的内容不变,相当于把dev的内容加入到master中
+
+        冲突长着个样子:
+        <<<<<<< HEAD
+        Creating a new branch is quick & simple.
+        =======
+        Creating a new branch is quick AND simple.
+        >>>>>>> feature1
      )
 
-  4: 
+  5: git branch -d dev 删除分支 (在冲突没解决的时候不能用这个删除分支)
 
-  5: 
+  6: git branch -D dev 强制删除分支
+
+  7: git log --graph --pretty=oneline --abbrev-commit 用带参数的git log也可以看到分支的合并情况
+
+  8: git merge --no-ff -m "merge with no-ff" dev 
+     (
+      合并dev分支，请注意--no-ff参数，表示禁用Fast forward
+      正常Fast forward 的merge没有merge信息,所以为了显示出合并信息,加入--no-ff参数
+     )
+
+  9: git stash 工作不想提交,因为只进行到了一半,可以存储工作现场
+
+  10: git stash apply 一般是用这个恢复工作现场,但stash内容并不删除
+
+  11: git stash drop 删除内容10的内容
+
+  12: git stash pop 恢复工作现场的同时,也删了stash
+
+  
 
 
 
