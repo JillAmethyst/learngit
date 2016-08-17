@@ -73,7 +73,7 @@ git push origin master 就可以把版本库传到远程了 不用加-u
                 提交之后各个分支处于独立互不干扰的状态,merge的冲突再去解决
                 在master merge dev后,master有冲突,但dev中的内容不变,相当于把dev的内容加入到master中
 
-        冲突长着个样子:
+        冲突长这个样子:
         <<<<<<< HEAD
         Creating a new branch is quick & simple.
         =======
@@ -83,7 +83,7 @@ git push origin master 就可以把版本库传到远程了 不用加-u
 
   5: git branch -d dev 删除分支 (在冲突没解决的时候不能用这个删除分支)
 
-  6: git branch -D dev 强制删除分支
+  6: git branch -D dev 强制删除分支 如果要丢弃一个没有被合并过的分支，可以通过这个强行删除
 
   7: git log --graph --pretty=oneline --abbrev-commit 用带参数的git log也可以看到分支的合并情况
 
@@ -101,6 +101,7 @@ git push origin master 就可以把版本库传到远程了 不用加-u
 
   12: git stash pop 恢复工作现场的同时,也删了stash
 
+  13: 
   
 
 
