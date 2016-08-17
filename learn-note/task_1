@@ -1,0 +1,36 @@
+lzop -d 000319_0.lzo
+
+desc di.piwikmeta;
+desc user_behavior_trajectory;
+select action from user_behavior_trajectory where app = 'H5' and pdate = '2016-08-04' limit 100;
+select * from user_behavior_trajectory where app = 'H5' and pdate = '2016-08-04' limit 10;
+show partitions user_behavior_trajectory;
+use resys_online;
+#show partitions resys_online.user_behavior_trajectory;
+show create table di.piwikmeta;
+desc resys_online.user_behavior_trajectory;
+
+
+
+西瓜橙子一定好喝
+全子集
+进位
+
+
+spark-submit --master local
+spark-submit --master yarn-cluster
+sbt assembly
+scp resys@10.1.7.102... 
+rsync 
+
+for((i=1;i<=60;i++))
+do
+        date=`date -d "$i days ago" +%F`
+        echo $date
+done
+
+
+
+
+
+
