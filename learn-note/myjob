@@ -1,0 +1,27 @@
+myjob
+1.在mac下
+  cd ~
+2.运行
+  ./koudai-hosts 1
+3.进入102的机器,输入:
+  laoxu
+4.目前我的job为job/mytask里面的东东, 运行的是mytask里面的bin/hrun.sh
+  运行它的快捷方式写入到了xuwanting下面的runjob.sh里,运行输入:
+  ./runjob.sh
+  
+
+5.在本机中,我的mytask存放在了xuwt下的workspace中,主要想法是在本机中修改,
+  传入到102机器里面,然后运行
+6.在workspace中修改后,可以在workspace目录下运用快捷方式传输文件
+  ./sscp.sh
+  后面的参数 以及传输的东西 忘了就自己再看一遍好了
+  这个是直接把内容传输到102的job里面的
+
+
+7.user_info_mining的我的分支 名字是 xwt_branch
+8.user_info_mining我存放在本机的, 里面还有很多其他的
+  xwt/git/
+
+
+9.论文的东东我存在了classification里面的multi_model中
+10.我现在的这些笔记我存在了classification里面的learngit中

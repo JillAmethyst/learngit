@@ -1,5 +1,7 @@
 #!/bin/bash 是linux需要用它和它后面的表示文件类型
 
+pdf 文档在document中的shell里面
+
 运行hello.sh
 $ bash hello
 $ sh hello
@@ -165,7 +167,11 @@ find . -mtime -1 -type f -print
 
 tar -zcvf lastmod.tar.gz `find . -mtime -1 -type f -print`
 
+tar –cf 名字.tar 文件 
 
+再重新压缩：tar –rf 名字.tar 文件 
+
+解压缩命令：tar –xvf 名字.tar
 
 
 
