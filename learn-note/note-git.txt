@@ -17,7 +17,7 @@ git diff file.name 查看文件远程和本地的区别
 
 git log 日志
 
-git log --pretty=oneline  漂亮点的书写
+git log --pretty=oneline  漂亮点的书写logs
 
 git reset --hard HEAD^
 git reset --hard HEAD^^

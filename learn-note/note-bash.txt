@@ -1,5 +1,4 @@
 #!/bin/bash 是linux需要用它和它后面的表示文件类型
-
 pdf 文档在document中的shell里面
 
 运行hello.sh
@@ -173,6 +172,21 @@ tar –cf 名字.tar 文件
 
 解压缩命令：tar –xvf 名字.tar
 
+rsync xuwt@172.16.27.101:/Users/xuwt/xwt/git/user_info_mining . 
+
+alias rsync='rsync -apr --progress -e "ssh -c aes128-ctr"'
+alias scp='scp -c arcfour'
+alias grep='grep --color=auto'
+alias vi='vim'
+alias ll='ls -lht --color=tty'
+alias ls='ls --color=tty'
+alias top='top -u resys'
+alias blockmail="rm /home/resys/bin/send_mail"
+alias resumemail="cp /home/resys/bin/send_mail.bak /home/resys/bin/send_mail"
+
+alias hls='hadoop fs -ls'
+alias hcat='hadoop fs -cat'
+alias hfs='hadoop fs'
 
 
 
