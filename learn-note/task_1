@@ -10,6 +10,8 @@ use resys_online;
 show create table di.piwikmeta;
 desc resys_online.user_behavior_trajectory;
 
+rsync -apr --progress -e "ssh -c aes128-ctr" xuwt@172.16.27.62:/Users/xuwt/xwt/git/user_info_mining .
+
 APOLLO_ENV_STAGE='gamma'
 
 hfs -text /user/resys/projects/user_info_mining/online/MergeMonthLogClean/2016-08-29/part-00000|less
