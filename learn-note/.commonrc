@@ -1,0 +1,106 @@
+export LANG=en_US.UTF-8
+export EDITOR=vim
+export HOME=/data/resys/xuwanting
+export LD_LIBRARY_PATH=/home/resys/lib/:/data/resys/local/mysql/lib:/home/resys/var/opencv-2.4.7/lib:/home/resys/var/gcc-4.9.2/lib64:/home/resys/var/mpich-3.1.3/lib:/home/resys/var/gmp-5.0.5/lib:/home/resys/var/mpfr-3.1.0/lib:/home/resys/var/mpc-0.9/lib:/home/resys/var/gsl/lib
+export LD_LIBRARY_PATH=/home/resys/var/boost_1_57_0/lib:$LD_LIBRARY_PATH
+
+export C_INCLUDE_PATH=/home/resys/var/mpich-3.1.3/include:/data/resys/gaoyunxiang/stl:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/opencv-2.4.7/include:/home/resys/var/python2.7.3/include/python2.7:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/include/:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/mongodb-driver/include:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/jdk1.7.0_17/include/linux/:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/jdk1.7.0_17/include:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/sparsehash-2.0.2/include:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/gcc-4.9.2/include/c++/4.9.0:$C_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/resys/var/lzo-2.08/include:$C_INCLUDE_PATH
+
+export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH:$CPLUS_INCLUDE_PATH
+
+export LIBRARY_PATH=/home/resys/lib/:/home/resys/var/gcc-4.9.2/lib64
+export LIBRARY_PATH=/home/resys/var/mpich-3.1.3/lib/:$LIBRARY_PATH
+export LIBRARY_PATH=/home/resys/var/mongodb-driver/lib/:$LIBRARY_PATH
+export LIBRARY_PATH=/home/resys/var/hadoop/c++/Linux-amd64-64/lib/:$LIBRARY_PATH
+export LIBRARY_PATH=/home/resys/var/lzo-2.08/lib:$LIBRARY_PATH
+
+export PATH=/home/resys/var/clang-3.4/bin:/usr/sbin/:/home/resys/var/mongodb-2.4.6/bin:/data/resys/xuwanting/bin:/home/resys/bin/bin/:/data/resys/local/tfs_bin/bin:/data/resys/local/mysql/bin:/home/resys/var/opencv-2.4.7/bin/:/home/resys/var/cmake-2.8.8/bin:/home/resys/var/mpich-3.1.3/bin:/home/resys/var/gcc-4.9.2/bin/:/home/resys/var/python2.7.3/bin/:/home/resys/var/vim74/bin/:/home/resys/bin/:$PATH
+export PATH=/home/resys/var/scons-2.3.0/bin/:$PATH
+
+export HYDRA_HOST_FILE=/data/resys/fengyachao/.mpihost
+export PYTHONPATH=/data/resys/fengyachao/stl/momo_py:$PYTHONPATH
+export PYTHONPATH=/home/resys/var/opencv-2.4.1/lib/python2.7/site-packages:$PYTHONPATH
+export EDITOR=vim
+export TMPDIR=/data/resys/tmp
+export BLAS=/usr/lib64/libblas.a
+
+#alias ~~~~~~~~~~~~
+alias rsync='rsync -apr --progress -e "ssh -c aes128-ctr"'
+alias scp='scp -c arcfour'
+alias grep='grep --color=auto'
+alias vi='vim'
+alias ll='ls -lht --color=tty'
+alias ls='ls --color=tty'
+alias top='top -u resys'
+alias blockmail="rm /home/resys/bin/send_mail"
+alias resumemail="cp /home/resys/bin/send_mail.bak /home/resys/bin/send_mail"
+
+alias hls='hadoop fs -ls'
+alias hcat='hadoop fs -cat'
+alias hfs='hadoop fs'
+
+alias ylg='yarn logs -applicationId'
+alias ykill='yarn application -kill'
+
+function pps(){ ps x | grep -v grep| grep "$@"; }
+
+
+#hadoop ~~~~~~~~~~~
+export HADOOP_PREFIX="/usr/local/webserver/hadoop-resys"
+PATH=$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin:$PATH
+export HADOOP_MAPRED_HOME=${HADOOP_PREFIX}
+export HADOOP_COMMON_HOME=${HADOOP_PREFIX}
+export HADOOP_HDFS_HOME=${HADOOP_PREFIX}
+export HADOOP_CONF_DIR="${HADOOP_PREFIX}/etc/hadoop"
+export hadoop_cmd="hadoop jar /usr/local/webserver/hadoop-resys/share/hadoop/tools/lib/hadoop-streaming-2.6.2.jar"
+
+#hive
+export PATH=/usr/local/webserver/hive-resys/bin/:$PATH
+export HIVE_HOME=/usr/local/webserver/hive-resys
+
+#java
+export JAVA_HOME=/home/resys/var/jdk1.7.0_17
+export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+PATH=$JAVA_HOME/bin:$PATH
+
+#R
+PATH=/home/resys/var/R-3.0.0/bin/:$PATH
+
+
+#gdb
+PATH=/home/resys/var/gdb-7.5.1/bin/:$PATH
+
+#pig
+PATH=/home/resys/var/pig-0.11.1/bin:$PATH
+export PIG_HOME=/home/resys/var/pig-0.11.1
+export PIG_CLASSPATH=/home/resys/var/pig-0.11.1/lib:/home/resys/var/pig-0.11.1
+
+
+#htop
+PATH=/home/resys/var/htop-1.0.2/bin:$PATH
+
+#scala
+export SCALA_HOME=/home/resys/var/scala-2.11.1
+export PATH=/home/resys/var/scala-2.11.1/bin:$PATH
+
+#spark
+export PATH=$PATH:/data/resys/var/spark-1.5.2-bin-hadoop2.4/bin
+
+#CRF
+export PATH=$PATH:/home/resys/var/CRF/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/resys/var/CRF/lib
+export LD_RUN_PATH=$LD_RUN_PATH:/home/resys/var/CRF/lib
+
+alias spark-shell="spark-shell --num-executors 100 --executor-memory 20G"
+
+export GIT_SSH=git_ssh
+
+
