@@ -10,12 +10,30 @@ use resys_online;
 show create table di.piwikmeta;
 desc resys_online.user_behavior_trajectory;
 
+APOLLO_ENV_STAGE='gamma'
 
+hfs -text /user/resys/projects/user_info_mining/online/MergeMonthLogClean/2016-08-29/part-00000|less
+hls /user/resys/projects/user_info_mining/online/MergeMonthLogClean/
+
+hls /user/resys/projects/user_info_mining/online/LogCleanBhvIpPhone/
+hfs -text /user/resys/projects/user_info_mining/online/LogCleanBhvIpPhone/2016-08-29/part-00000|less
+
+hls /user/resys/projects/user_info_mining/online/ParseUserBehaviorTrajectoryFiltered/H5/
+hfs -text /user/resys/projects/user_info_mining/online/ParseUserBehaviorTrajectoryFiltered/H5/2016-08-29/part-00000.gz|less
+
+hls /user/resys/projects/user_info_mining/online/AnalysisLogCleanWithBox/2016-09-01
+hfs -text /user/resys/projects/user_info_mining/online/AnalysisLogCleanWithBox/2016-09-01/part-00000|less
+
+cat part-00000 | awk -F"\t" '{print $2}'>data
+%s/\n/','/g
 
 西瓜橙子一定好喝
+二分法
+分割字符串
 全子集
 进位
 朴素贝叶斯
+逻辑回归
 svm
 
 

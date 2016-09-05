@@ -1,0 +1,422 @@
+\documentclass[245.0pt]{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{ left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm }
+
+\begin{document}
+洛伦兹范数:
+% 1.1
+\begin{equation*}
+\min \limits_{\alpha} \frac{1}{2} \Vert D \alpha - X \Vert_{2}^{2} + \lambda_{1}\Vert\alpha \Vert_{L}  + \frac{\lambda_{2}}{2} \Vert \alpha \Vert_{2}^{2} \tag{1.1}
+\end{equation*}
+对(1.1)式 关于$\alpha$求导
+% 1.2
+\begin{equation*}
+D^{T} ( D \alpha - X ) + \lambda_{1} W \alpha + \lambda_{2} \alpha = 0 \tag{1.2}
+\end{equation*}
+%
+其中
+\begin{equation*}
+W_{i,i} = \frac{2}{\gamma^{2} + \alpha_{i}^{2}}
+\end{equation*}
+%
+再对(1.2)式关于$d_{ij}$求导,得到
+% 1.3
+\begin{equation*}
+\begin{split}
+&E_{ij}^{T} ( D \alpha - X ) +  D^{T} \frac{\partial ( D\alpha - X )}{\partial d_{ij}} + \lambda_{1} W_{1} \frac{\partial \alpha}{\partial d_{ij}} + \lambda_{2} \frac{\partial \alpha}{\partial d_{ij}} = 0 \\
+&E_{ij}^{T} ( D \alpha - X ) + D^{T} E_{ij} \alpha + D^{T} D \frac{\partial \alpha}{\partial d_{ij}} + \lambda_{1} W_{1} \frac{\partial \alpha}{\partial d_{ij}} + \lambda_{2} \frac{\partial \alpha}{\partial d_{ij}} = 0 
+\end{split}
+\tag{1.3}
+\end{equation*}
+%
+整理(1.3)式
+% 1.4
+\begin{equation*}
+( D^{T} D + \lambda_{1} W_{1} + \lambda_{2} I ) \frac{\partial \alpha}{\partial d_{ij}} = E_{ij}^{T} ( X - D \alpha ) - D^{T} E_{ij} \alpha 
+\tag{1.4}
+\end{equation*}
+%
+令
+\begin{equation*}
+P = D^{T} D + \lambda_{1} W_{1} + \lambda_{2} I 
+\end{equation*} 
+% 1.5
+得到:
+\begin{equation*}
+\frac{\partial \alpha}{\partial d_{ij}} = P^{-1} ( E_{ij}^{T} ( X - D \alpha ) - D^{T} E_{ij} \alpha )\tag{1.5}
+\end{equation*}
+% 1.6
+根据连锁规则, f对$d_{ij}$的导数
+\begin{equation*}
+\begin{split}
+\frac{\partial f}{\partial d_{ij}} &= < \frac{\partial \alpha}{\partial d_{ij}} \ , \ \frac{\partial f}{\partial \alpha} > \\ % = < X - D \alpha \ , \ E_{ij} \phi > - < E_{ij} \alpha \ , \ D \phi> \\
+&= < P^{-1} ( E_{ij}^{T} ( X - D \alpha ) - D^{T} E_{ij} \alpha ) \ , \ \frac{\partial f }{\partial \alpha} > \\
+&= < E_{ij}^{T} ( X - D \alpha ) - D^{T} E_{ij} \alpha \ , \ P^{-T} \frac{\partial f}{\partial \alpha} >
+\end{split} \tag{1.6}
+\end{equation*}
+% 1.7
+记
+\begin{equation*}
+\phi = P^{-T} \frac{\partial f}{\partial \alpha} \qquad ( P^{T} \phi , \ \phi \ can\ get\ from\ sovling\ an\ equation) \tag{1.7}
+\end{equation*}
+% 1.8
+则
+\begin{equation*}
+\begin{split}
+\frac{\partial f}{\partial d_{ij}} &= < E_{ij}^{T} ( X - D \alpha ) - D^{T} E_{ij} \alpha \ , \ \phi > \\
+&= <E^{T}_{ij} ( X - D \alpha ) , \phi > - < D^{T} E_{ij} \alpha , \phi > \\
+&= < X - D \alpha \ , \ E_{ij} \phi > - < E_{ij} \alpha \ , \ D \phi >
+\end{split} \tag{1.8}
+\end{equation*}
+% 1.9
+因此
+\begin{equation*}
+\begin{split}
+\frac{\partial f}{\partial D} &= (\frac{\partial f}{\partial d_{ij}} ) \\
+&= ( < X - D \alpha \ , \ E_{ij} \phi > ) - ( < E_{ij} \alpha \ , \ D \phi > ) \\
+&= ( < X - D \alpha \ , \ E_{ij} \phi > ) - ( < D \phi \ , \ E_{ij} \alpha > ) \\
+&= ( \ ( X - D \alpha )_{i} \phi_{j} ) - ( \ ( D \phi )_{i} \alpha_{j} ) \\
+&= ( X - D \alpha ) \phi^{T} - D \phi \alpha^{T}
+\end{split} \tag{1.9}
+\end{equation*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+Huber范数:
+% 2.1
+\begin{equation*}
+\alpha = \alpha_{d\times s} = (\alpha_{ij})_{d\times s} \tag{2.1}
+\end{equation*}
+% 2.2
+\begin{equation*}
+H(\omega) = \Vert\omega\Vert_{h,\delta}\tag{2.2}
+\end{equation*}
+% 2.3
+二次拼接
+\begin{equation*}
+\begin{cases}
+\frac{|\omega|^2}{2\delta}\qquad|\omega|<\delta\\
+|\omega| - \frac{\delta}{2}\qquad|\omega|\geq\delta
+\end{cases} \tag{2.3}
+\end{equation*}
+% 2.4
+Huber范数关于$\omega$的一次导数
+\begin{equation*}
+H_{\omega}(\omega) = 
+\begin{cases}
+\frac{\omega}{\delta} \qquad |\omega| \leq \delta\\
+1 \qquad \omega>\delta\\
+-1 \qquad \omega<-\delta
+\end{cases} \tag{2.4}
+\end{equation*}
+% 2.5
+特征向量的Huber范数形式:
+\begin{equation*}
+\Vert \alpha \Vert_{h,\delta} = \sum_{i=1}^{d} \Vert \alpha_{i-} \Vert_{h,\delta} = \sum_{i=1}^{d} \Vert \quad \sqrt{\sum_{j=1}^{S}\alpha_{ij}^{2} } \quad \Vert_{h,\delta} \tag{2.5}
+\end{equation*}
+% 2.6
+\begin{align*}
+\frac{\partial}{\partial\alpha_{ij}}\Vert \alpha \Vert_{h,\delta}&= \frac{\partial\Vert \alpha_{i-} \Vert_{h,\delta}}{\partial \alpha_{ij}}\\
+&= (\vert \alpha_{i-} \vert \leq \delta ) \cdot \frac{\alpha_{ij}}{\delta} + (\vert \alpha_{i-} \vert > \delta ) \cdot \frac{\alpha_{ij}}{\vert \alpha_{i-} \vert}\tag{2.6}
+\end{align*}
+% 2.7
+对(2.6)式关于$d_{m,n}$求导
+\begin{align*}
+\frac{\partial^2 \Vert \alpha \Vert_{h,\delta}}{\partial \alpha_{ij} \cdot \partial d_{m,n}} = &\frac{(\vert \alpha_{i-} \vert \leq \delta)}{\delta} \cdot \frac{\partial \alpha_{ij}}{\partial d_{mn}}\\
+& +(\vert \alpha_{i-} \vert > \delta) \left[ \frac{1}{\vert \alpha_{i-}\vert} \frac{\partial \alpha_{ij}}{\partial d_{mn}} - \frac{\alpha_{ij}}{\vert \alpha_{i-} \vert^3} \sum_{l=1}^{S} \frac{\partial \alpha_{il}}{\partial d_{mn}} \right] \tag{2.7}
+\end{align*}
+% 2.8
+\begin{align*}
+\frac{\partial}{\partial d_{mn}} \frac{\partial \Vert \alpha_{i-} \Vert_{h,\delta}}{\partial \alpha_{ij}} = &\frac{(\vert \alpha_{i-}\vert \leq \delta)}{\delta} \cdot \frac{\partial \alpha_{ij}}{\partial d_{mn}}\\
+& + (\vert \alpha_{i-} \vert > \delta)\left[\frac{1}{\vert \alpha_{i-} \vert} \frac{\partial \alpha_{ij}}{\partial d_{mn}} - \frac{\alpha_{ij}}{\vert \alpha_{i-}\vert^3} \sum_{l=1}^S \frac{\partial \alpha_{il}}{\partial d_{mn}} \right] \tag{2.8}
+\end{align*}
+% 2.9
+\begin{align*}
+\frac{\partial}{\partial d_{mn}} \frac{\partial \Vert \alpha_{i-} \Vert_{h,\delta}}{\partial (\alpha_{i-}^T)} = &( \; \frac{(\vert \alpha_{i-} \vert \leq \delta)}{\delta}  I_{S\times S}\\
+& + (\vert \alpha_{i-} \vert > \delta ) \left[ \frac{1}{\vert \alpha_{i-} \vert}I_{S\times S} - \frac{1}{\vert \alpha_{i-} \vert^3} \alpha_{i-}^T \cdot \boldsymbol{1_{-}} \right] ) \frac{\partial \alpha_{i-}^T }{\partial d_{mn}} \tag{2.9}
+\end{align*}
+% 2.10
+\begin{align*}
+\frac{\partial}{\partial d_{mn}} \frac{\partial \Vert \alpha \Vert_{h,\delta}}{\partial \alpha} &= diag \left(\frac{\partial}{\partial d_{mn}} \cdot \frac{\partial\Vert\alpha_{i-}\Vert_{h,\delta}}{\partial (\alpha_{i-}^T)} \right)\\
+&= W_1 \tag{2.10}
+\end{align*}
+%
+\begin{gather*}
+\alpha = 
+\begin{pmatrix}
+\alpha_{1-}^T\\
+\alpha_{2-}^T\\
+\cdot\\
+\cdot\\
+\cdot\\
+\alpha_{d-}^T\\
+\end{pmatrix}
+\qquad \boldsymbol{1_{-}} = (1,1,\cdots,1) 
+\end{gather*}
+% 2.11
+将上述结果应用到公式(2.11)的求解中
+\begin{equation*}
+\min \limits_{\alpha} \frac{1}{2}\Vert D \alpha - X \Vert_{2}^{2} + \lambda_{1}\Vert \alpha \Vert_{h,\delta} + \frac{\lambda_{2}}{2}\Vert \alpha \Vert_{2}^{2} \tag{2.11}
+\end{equation*}
+% 
+先令 $\alpha = a$,得到
+% 2.12
+\begin{equation*}
+\begin{cases}
+\min \limits_{\alpha} \frac{1}{2}\Vert Da - X \Vert_{2}^{2} + \lambda_{1} \Vert \alpha \Vert_{h,\delta} + \frac{\lambda_{2}}{2}\Vert a \Vert_{2}^{2}\\
+\tag{2.12} \\
+a = \alpha
+\end{cases}
+\end{equation*}
+% 2.13
+利用admm进行求解
+\begin{equation*}
+\begin{cases}
+\min \limits_{a} \frac{1}{2}\Vert Da - x \Vert_{2}^{2} + \frac{\lambda_{2}}{2}\Vert a \Vert_{2}^{2} + \frac{\rho}{2}\Vert a - \alpha + u^{k} \Vert_{2}^{2}\\
+\\
+\min \limits_{\alpha} \lambda_{1} \Vert \alpha \Vert_{h,\delta} + \frac{\rho}{2}\Vert a - \alpha + u^{k} \Vert_{2}^{2}\\
+\\
+u^{k+1} = u^{k} + a^{k+1} - \alpha^{k+1}
+\end{cases} \tag{2.13}
+\end{equation*}
+% 2.14
+首先求解(2.13)中的第一个式子:
+\begin{equation*}
+D^{T} ( D a - X ) + \lambda_{1} a + \rho ( a - \alpha^{k} + u^{k} ) = 0 \tag{2.14}
+\end{equation*}
+% 2.15
+\begin{equation*}
+\Rightarrow \quad a = ( D^{T} D + \lambda_{1} I + \rho I )^{-1} [ D^{T}DX + \rho ( \alpha^{k} - u^{k} ) ]
+\tag{2.15}
+\end{equation*}
+% 2.16
+求解(2.13)中的第二个式子:
+\begin{equation*}
+\begin{pmatrix}
+\lambda_{1}\\
+\lambda_{1} \frac{\alpha}{\delta}\\
+-\lambda_{1}
+\end{pmatrix}
++ \rho(\alpha^k - a^{k+1} - u^{k}) = 0 \tag{2.16}
+\end{equation*}
+% 2.17
+\begin{equation*}
+\Rightarrow \qquad \alpha = 
+\begin{cases}
+a^{k+1}+u^{k}-\frac{\lambda_{1}}{\rho} \qquad \qquad a^{k+1} + u^{k}>\delta + \frac{\lambda_{1}}{\rho} \\
+\\
+\frac{\rho(a^{k+1}+u^{k})}{\rho + \frac{\lambda_{1}}{\delta}} = \frac{a^{k+1} + u^{k}}{1+\frac{\lambda_{1}}{\rho \delta}} \qquad \vert a^{k+1} + u^{k} \vert < \delta + \frac{\lambda_{1}}{\rho} \\
+\\
+a^{k+1} + u^{k} + \frac{\lambda_{1}}{\rho} \qquad \qquad a^{k+1} 
++ u^{k} < -\delta - \frac{\lambda_{1}}{\rho}
+\end{cases} \tag{2.17}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+Huber范数:
+% 3.1
+\begin{equation*}
+H(\omega) = \Vert\omega\Vert_{h,\delta}\tag{3.1}
+\end{equation*}
+% 3.2
+四次拼接,首先设Huber函数的四次表达式为:
+\begin{equation*}
+f(x) = a x^{4} + b x ^{2} +c \tag{3.2}
+\end{equation*}
+% 3.3
+由 条件
+\begin{equation*}
+\begin{split}
+f(\delta ) = \delta \\
+f'(\delta ) = 1 \\
+f''(\delta ) = 0 
+\end{split}
+\end{equation*}
+%
+可以得到
+\begin{align*}
+\delta &= a \delta^{4} + b \delta^{2} + c \tag{3.3} \\
+1 &= 4a \delta^{3} + 2b \delta \tag{3.4} \\
+0 &= 12a \delta^{2} + 2b \tag{3.5}
+\end{align*}
+%
+从而可以推出 \\
+$(3.4) - \delta \cdot (3.5) \Rightarrow$
+\begin{equation*}
+1 = - 8a\delta^{3}
+\end{equation*}
+% 3.6
+\begin{equation*}
+\Rightarrow a = - (\frac{1}{2 \delta} )^{3} \tag{3.6}
+\end{equation*}
+% 3.7
+将(3.6)带入(3.5)中,得到:
+\begin{equation*}
+\Rightarrow b = - 6a \delta^{2} = \frac{3}{4 \delta} \tag{3.7}
+\end{equation*}
+% 3.8
+将(3.6)和(3.7)带入(3.3)中, 得到:
+\begin{equation*}
+\begin{split}
+c &= \delta - a \delta^{4} - b \delta^{2} \\
+&= \delta - ( - \frac{\delta^{4}}{8 \delta^{3}} ) - \frac{3}{4 \delta} \cdot \delta^{2} \\
+&= \delta + \frac{\delta}{8} - \frac{3}{4} \delta \\
+&= \frac{3}{8} \delta
+\end{split} \tag{3.8}
+\end{equation*}
+% 3.9
+则
+\begin{equation*}
+\begin{split}
+f''(x) &= 12 a x^{2} + 2b \\
+&= - \frac{1}{8 \delta^{3}} \cdot 12 \cdot x^{2} + \frac{3}{2\delta} \\
+&= \frac{1}{\delta} ( - \frac{3}{2} (\frac{x}{\delta})^{2} + \frac{3}{2} ) \\
+&= \frac{3}{2 \delta} ( 1 - (\frac{x}{\delta} )^{2} ) \\
+&\geq 0 \quad ( \vert x \vert \leq \delta )
+\end{split} \tag{3.9}
+\end{equation*}
+% 3.10
+所以四次拼接的Huber函数为:
+\begin{equation*}
+H(\omega) = 
+\begin{cases}
+- (\frac{1}{2 \delta} )^{3} \omega^{4} + \frac{3}{4 \delta} \omega^{2} + \frac{3}{8} \delta \qquad & \vert \omega \vert < \delta \\
+\vert \omega \vert & \vert \omega \vert \geq \delta
+\end{cases} \tag{3.10}
+\end{equation*}
+% 3.11
+Huber范数关于$\omega $的一次导数:
+\begin{equation*}
+H(\omega) = 
+\begin{cases}
+- \frac{1}{2 \delta^{3}} \omega^{3} + \frac{3}{2 \delta} \omega \qquad & \vert \omega \vert \leq \delta \\
+1 & \omega > \delta \\
+-1 & \omega < - \delta
+\end{cases} \tag{3.11}
+\end{equation*}
+% 3.12
+Huber范数关于$\omega $的二次导数:
+\begin{equation*}
+H(\omega) = 
+\begin{cases}
+\frac{3}{2 \delta} (1 - (\frac{\omega}{\delta} )^{2} ) \qquad & \vert \omega \vert \leq \delta \\
+0 & \omega > \delta \\
+0 & \omega < - \delta
+\end{cases} \tag{3.12}
+\end{equation*}
+% 3.13
+Huber范数关于$\alpha_{ij} $的导数:
+\begin{equation*}
+\begin{split}
+\frac{\partial \Vert \alpha \Vert_{h, \delta}}{\partial \alpha_{ij}} &= \frac{\partial \Vert \alpha_{i-} \Vert_{h,\delta}}{\partial \alpha_{ij}} \\
+&= ( \vert \alpha_{i-} \vert \leq \delta ) \cdot \left [ \frac{3}{2 \delta} \alpha_{ij} - \frac{1}{2 \delta^{3}} \alpha_{ij}^{3} \right ] + ( \vert \alpha_{i-} \vert > \delta ) \cdot \frac{\alpha_{ij}}{\vert \alpha_{i-} \vert}
+\end{split} \tag{3.13}
+\end{equation*}
+% 3.14
+对上式关于$d_{ij} $求导:
+\begin{equation*}
+\begin{split}
+\frac{\partial^{2} \Vert \alpha \Vert_{h, \delta } } {\partial \alpha_{ij} \ \partial d_{m,n} } = & ( | \alpha_{i-} | \leq \delta ) \cdot \left [ \frac{3}{2 \delta} \frac{\partial \alpha_{ij} }{\partial d_{m,n} } - \frac{3 \alpha^{2}_{ij} }{2 \delta^{3} } \frac{\partial \alpha_{ij} }{\partial d_{m,n}} \right ] \\
+&+ ( |\alpha_{i-} > \delta ) \cdot \left [ \frac{1}{|\alpha_{i-} |} \frac{\partial \alpha_{ij} }{\partial d_{m,n} } - \frac{\alpha_{ij} }{ |\alpha_{i-} |^{3} } \sum_{l = 1}^{S} \frac{\partial \alpha_{il} }{\partial d_{m,n}} \right ]
+\end{split} \tag{3.14}
+\end{equation*}
+% 3.15
+\begin{equation*}
+\begin{split}
+\frac{\partial^{2} \Vert \alpha_{i-} \Vert_{h, \delta } } {\partial d_{m,n} \ \partial \alpha_{ij} } = & ( | \alpha_{i-} | \leq \delta ) \cdot \left [ \frac{3}{2 \delta} \frac{\partial \alpha_{ij} }{\partial d_{m,n} } - \frac{3 \alpha^{2}_{ij} }{2 \delta^{3} } \frac{\partial \alpha_{ij} }{\partial d_{m,n}} \right ] \\
+&+ ( |\alpha_{i-} > \delta ) \cdot \left [ \frac{1}{|\alpha_{i-} |} \frac{\partial \alpha_{ij} }{\partial d_{m,n} } - \frac{\alpha_{ij} }{ |\alpha_{i-} |^{3} } \sum_{l = 1}^{S} \frac{\partial \alpha_{il} }{\partial d_{m,n}} \right ]
+\end{split} \tag{3.15}
+\end{equation*}
+% 3.16
+\begin{equation*}
+\begin{split}
+&\frac{\partial^{2} \Vert \alpha_{i-} \Vert_{h, \delta } } {\partial d_{m,n} \ \partial ( \alpha_{i-}^{T} ) } \\
+=& \left (  ( | \alpha_{i-} | \leq \delta ) \cdot \left [ \frac{3}{2 \delta} I_{S\times S} - \frac{3 \alpha^{T2}_{i-} }{2 \delta^{3} } I_{S\times S} \right ] + ( |\alpha_{i-} | > \delta ) \cdot \left [ \frac{1}{|\alpha_{i-} |} I_{S\times S}  - \frac{1}{ |\alpha_{i-} |^{3} } \alpha_{i-}^{T} \boldsymbol{1_{-}} \right ] \right ) \frac{\partial \alpha_{i-}^{T}}{\partial d_{m,n} }
+\end{split} \tag{3.16}
+\end{equation*}
+% 3.17
+\begin{align*}
+\frac{\partial}{\partial d_{mn}} \frac{\partial \Vert \alpha \Vert_{h,\delta}}{\partial \alpha} &= diag \left(\frac{\partial}{\partial d_{mn}} \cdot \frac{\partial\Vert\alpha_{i-}\Vert_{h,\delta}}{\partial (\alpha_{i-}^T)} \right)\\
+&= W_1 \tag{3.17}
+\end{align*}
+%
+\begin{gather*}
+\alpha = 
+\begin{pmatrix}
+\alpha_{1-}^T\\
+\alpha_{2-}^T\\
+\cdot\\
+\cdot\\
+\cdot\\
+\alpha_{d-}^T\\
+\end{pmatrix}
+\qquad \boldsymbol{1_{-}} = (1,1,\cdots,1) 
+\end{gather*}
+%
+对于四次拼接Huber函数,求解(2.11)式,与(2.12)方法相同,可得到(2.13)式,在求解(2.13)式时,
+\begin{equation*}
+\Rightarrow \quad a = ( D^{T} D + \lambda_{1} I + \rho I )^{-1} [ D^{T}DX + \rho ( \alpha^{k} - u^{k} ) ]
+\end{equation*}
+% 3.18
+\begin{equation*}
+\begin{pmatrix}
+\lambda_{1} \\
+\lambda_{1} (- \frac{1}{2 \delta^{3}} \alpha^{k 3} + \frac{3}{2 \delta} \alpha^{k} )\\
+-\lambda_{1}
+\end{pmatrix}
++ \rho(\alpha^k - a^{k+1} - u^{k}) = 0 \tag{3.18}
+\end{equation*}
+% 3.19
+$\Rightarrow $
+\begin{equation*}
+\Rightarrow \qquad \alpha = 
+\begin{cases}
+a^{k+1}+u^{k}-\frac{\lambda_{1}}{\rho} \qquad \qquad a^{k+1} + u^{k}>\delta + \frac{\lambda_{1}}{\rho} \\
+\\
+\sqrt[3]{ - \frac{q}{2} + \sqrt{ ( \frac{q}{2} )^{2} + (\frac{p}{3} )^{3} } } + \sqrt[3]{ - \frac{q}{2} - \sqrt{ (\frac{q}{2} )^{2} + (\frac{p}{3} )^{3} } } \\
+\\
+a^{k+1} + u^{k} + \frac{\lambda_{1}}{\rho} \qquad \qquad a^{k+1} 
++ u^{k} < -\delta - \frac{\lambda_{1}}{\rho}
+\end{cases} \tag{3.19}
+\end{equation*}
+%
+其中,
+\begin{equation*}
+\begin{split}
+p = - ( 3 \delta^{2} + \frac{2 \delta^{3} \rho}{\lambda_{1} } ) \\
+q = \frac{2\delta^{3} \rho}{\lambda_{1}} (a^{k+1} + u^{k} )
+\end{split}
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
